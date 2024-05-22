@@ -12,7 +12,7 @@ class ApiService {
     this.location = 'Kiev';
   }
 
-  // ************************** Making a request to the server
+  // *********************** Making a request to the server
   // ***** The method accepts a collection parameter - this is weather (data for 1 day) or forecast (data for 5 days)
   // allows you to receive data for 1 or 5 days depending on the parameter
 
