@@ -84,7 +84,7 @@ const renderFiveDays = data => {
     return 'http://openweathermap.org/img/wn/' + icon + '@2x.png';
   };
 
-  // ***** Получаем скорость ветра
+  // ***** We get the wind speed
   const getWindSpeed = data => {
     const wind = data.map(e => Math.floor(e.wind.speed)).reduce((a, b) => a + b, 0);
     const resultWind = Math.floor(+wind / data.length);
