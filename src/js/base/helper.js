@@ -63,7 +63,7 @@ const renderFiveDays = data => {
     return temp;
   };
 
-  // ***** Получаем картинку
+  // ***** We get a picture
   const getIconData = day => {
     const iconInfo = {};
 
