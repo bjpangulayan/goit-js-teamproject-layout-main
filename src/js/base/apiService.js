@@ -12,9 +12,9 @@ class ApiService {
     this.location = 'Kiev';
   }
 
-  // *********************** Making a request to the server
-  // ***** The method accepts a collection parameter - this is weather (data for 1 day) or forecast (data for 5 days)
-  // allows you to receive data for 1 or 5 days depending on the parameter
+  // ************************** Делаем запрос на сервер
+  // ***** Метод принимает параметр collection - это weather (данные за 1 день) или forecast (данные за 5 дней)
+  // позволяет получать данные на 1 или 5 дней в зависимости от параметра
 
   getData(collection) {
     const url = `${this.requestUrl}${collection}?q=${this.location}&units=${this.units}&appid=${this.key}`;
@@ -27,7 +27,7 @@ class ApiService {
     });
   }
 
-  // ***** Method for obtaining images from pixabay
+  // ***** Метод получения изображений с pixabay
 
   fetchImages() {
     const bgUrlIcon = `${this.bgIconUrl}${this.location}&page=1&per_page=12&key=${this.bgKeyImg}`;
@@ -40,7 +40,7 @@ class ApiService {
     });
   }
 
-  // ***** Setter for getting the current location after pressing Submit or Enter
+  // ***** Сеттер получения текущей локации после нажатия на Сабмит или Enter
   set query(newLocation) {
     this.location = newLocation;
   }

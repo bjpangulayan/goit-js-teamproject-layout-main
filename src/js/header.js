@@ -1,3 +1,61 @@
+import apiServise from './base/apiService';
+import updateButtons from '../templates/favoriteElem.hbs';
+import renderOneDay from './oneDay.js';
+import renderFiveDay from './fiveDays.js';
+import renderCalendar from './calendar.js';
+import onHideChartClick from './chart.js';
+import { setBgImages, setGeoLocationImg } from '../js/components/bg-service.js';
+import Siema from 'siema';
+import favoriteCity from '../templates/favoriteCity.hbs';
+
+const searchbox = document.querySelector('.input-form');
+const inputRef = document.querySelector('.search-box');
+const favoriteBtnRef = document.querySelector('.favorite-btn');
+const favListRef = document.querySelector('.city-list');
+
+const sliderBtnLeft = document.querySelector('.left');
+const sliderBtnRight = document.querySelector('.right');
+
+sliderBtnLeft.addEventListener('click', () => mySiema.prev());
+sliderBtnRight.addEventListener('click', () => mySiema.next());
+
+inputRef.addEventListener('input', function () {
+  if (this.value) {
+    return (this.value = this.value[0].toUpperCase() + this.value.slice(1));
+  }
+});
+
+searchbox.addEventListener('submit', setQuery);
+function setQuery(evt) {
+  evt.preventDefault();
+  const inputValue = inputRef.value;
+  apiServise.query = inputValue;
+
+  renderOneDay();
+  renderCalendar();
+  renderFiveDay();
+  onHideChartClick();
+  setBgImages();
+}
+
+// favoriteBtnRef.addEventListener('click', addFavCityOnList);
+
+function addFavCityOnList() {
+  if (inputRef.value.trim() === '') {
+    return;
+  }
+  const inputValue = inputRef.value;
+  console.log(inputValue);
+  favListRef.insertAdjacentHTML('beforeend', updateButtons([inputValue]));
+}
+// favListRef.insertAdjacentHTML('beforeend', localStorage.getItem('City'));
+
+//============================= LOCAL STORAGE ====================================
+
+const storage = {
+  cityArray: [],
+};
+
 const savedArray = JSON.parse(localStorage.getItem('City'));
 if (savedArray) {
   storage.cityArray = savedArray;

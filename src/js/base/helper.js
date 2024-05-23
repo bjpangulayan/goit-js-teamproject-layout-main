@@ -1,38 +1,37 @@
 let fiveDaysData = [];
 
 const renderFiveDays = data => {
-  const allDaysArr = data.list; // we have an array of 40 objects
+  const allDaysArr = data.list; // имеем массив из 40 объектов
 
+  const oneDayArr = data.list.map(element => element.dt_txt.slice(0, 10)); // получаем массив с датами
 
-  const oneDayArr = data.list.map(element => element.dt_txt.slice(0, 10)); // we get an array with dates
-
-  const dataUnique = oneDayArr.filter((elm, index, arr) => arr.indexOf(elm) === index); // we get an array with 5 unique dates
+  const dataUnique = oneDayArr.filter((elm, index, arr) => arr.indexOf(elm) === index); // получаем массив с 5 уникальными датами
   if (dataUnique.length > 5) {
     dataUnique.shift();
   }
 
   const fiveDays = dataUnique.map(data =>
     allDaysArr.filter(obj => obj.dt_txt.slice(0, 10) === data),
-  ); // we get an array with 5 arrays in 5 days
+  ); // получаем массив с 5 массивами за 5 дней
 
-  // ***** We get the day of the month
+  // ***** Получаем день месяца
   const getDate = data => new Date(data.dt * 1000).getDate();
 
-  // ***** We get the day of the week
+  // ***** Получаем день недели
   const getDayOfWeek = data => {
     const date = new Date(data * 1000);
     const weekDay = new Intl.DateTimeFormat('en', { weekday: 'long' }).format(date);
     return weekDay;
   };
 
-  // ***** We get a month
+  // ***** Получаем месяц
   const getMonth = data => {
     const date = new Date(data * 1000);
     const month = new Intl.DateTimeFormat('en', { month: 'short' }).format(date);
     return month;
   };
 
-  // ***** We get a year
+  // ***** Получаем год
   const getYear = function (data) {
     const currentDate = new Date(data * 1000);
     const months = [
@@ -53,7 +52,7 @@ const renderFiveDays = data => {
     return year;
   };
 
-  // ***** We calculate min/max temperature
+  // ***** Делаем расчет мин/макс температуры
   const mathTemp = data => {
     data = data.map(e => Math.floor(e.main.temp));
     const temp = {
@@ -63,7 +62,7 @@ const renderFiveDays = data => {
     return temp;
   };
 
-  // ***** We get a picture
+  // ***** Получаем картинку
   const getIconData = day => {
     const iconInfo = {};
 
@@ -84,7 +83,7 @@ const renderFiveDays = data => {
     return 'http://openweathermap.org/img/wn/' + icon + '@2x.png';
   };
 
-  // ***** We get the wind speed
+  // ***** Получаем скорость ветра
   const getWindSpeed = data => {
     const wind = data.map(e => Math.floor(e.wind.speed)).reduce((a, b) => a + b, 0);
     const resultWind = Math.floor(+wind / data.length);
