@@ -1,22 +1,22 @@
 {
-  "name": "parcel-project-template",
+  "name": "goit-js-teamproject-layout-main",
   "version": "1.1.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://MariaTrofimovaa.github.io/Weather-app-project",
+  "homepage": "https://bjpangulayan.github.io/goit-js-teamproject-layout-main",
   "scripts": {
     "dev": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /Weather-app-project/"
+    "build": "parcel build src/*.html --public-url /goit-js-teamproject-layout-main/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/goitacademy/parcel-project-template.git"
+    "url": "git+https://github.com/bjpangulayan/goit-js-teamproject-layout-main.git"
   },
   "keywords": [],
-  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
+  "author": "Beejay Pangulayan <bjspangulayan23@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/goitacademy/parcel-project-template/issues"
+    "url": "https://github.com/bjpangulayan/goit-js-teamproject-layout-main/issues"
   },
   "devDependencies": {
     "nodemon": "^3.1.0",
